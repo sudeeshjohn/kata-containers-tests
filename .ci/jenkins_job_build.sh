@@ -49,6 +49,13 @@ mkdir -p $(dirname "${tests_repo_dir}")
 # Get the repository of the PR to be tested
 mkdir -p $(dirname "${kata_repo_dir}")
 [ -d "${kata_repo_dir}" ] || git clone "https://${kata_repo}.git" "${kata_repo_dir}"
+cd ${kata_repo_dir}
+git config --global user.name "Sudeesh John"
+git config --global user.email sudeeshjon@in.ibm.com
+git remote add master https://github.com/nitkon/runtime.git
+git fetch master
+# Patch the runtime
+git cherry-pick -x 3e05fe6ce658a60e741a247d284e25fe09ef4576
 
 # If CI running on bare-metal, a few clean-up work before walking into test repo
 if [ "${BAREMETAL}" == true ]; then
