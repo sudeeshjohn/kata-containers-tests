@@ -55,7 +55,7 @@ git config --global user.email sudeeshjon@in.ibm.com
 git remote add master https://github.com/nitkon/runtime.git
 git fetch master
 # Patch the runtime
-git cherry-pick -x 3e05fe6ce658a60e741a247d284e25fe09ef4576
+git cherry-pick -x 1a90bae1c505d32e3f5a4665017611920b0a2dd9
 
 # If CI running on bare-metal, a few clean-up work before walking into test repo
 if [ "${BAREMETAL}" == true ]; then
