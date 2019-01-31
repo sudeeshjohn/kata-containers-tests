@@ -44,11 +44,11 @@ tests_repo_dir="${GOPATH}/src/${tests_repo}"
 
 # Get the tests repository
 mkdir -p $(dirname "${tests_repo_dir}")
-[ -d "${tests_repo_dir}" ] || git clone "https://${tests_repo}.git" "${tests_repo_dir}"
+[ -d "${tests_repo_dir}" ] || git clone "https://github.com/nitkon/tests.git" "${tests_repo_dir}"
 
 # Get the repository of the PR to be tested
 mkdir -p $(dirname "${kata_repo_dir}")
-[ -d "${kata_repo_dir}" ] || git clone "https://${kata_repo}.git" "${kata_repo_dir}"
+[ -d "${kata_repo_dir}" ] || git clone "https://github.com/nitkon/runtime.git" "${kata_repo_dir}"
 
 # If CI running on bare-metal, a few clean-up work before walking into test repo
 if [ "${BAREMETAL}" == true ]; then
@@ -66,7 +66,7 @@ fi
 pushd "${kata_repo_dir}"
 
 pr_number=
-branch=
+branch="master"
 
 # $ghprbPullId and $ghprbTargetBranch are variables from
 # the Jenkins GithubPullRequestBuilder Plugin
